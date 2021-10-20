@@ -12,6 +12,10 @@ class ToDoList extends Model
     protected  $fillable = [
       'user_id', 'todo_content', 'completed'
     ];
+    protected $casts = [
+        'completed' => 'integer',
+    ];
+
 
     public function user()
     {

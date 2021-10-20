@@ -4,7 +4,7 @@ namespace  App\Services\ToDoList;
 
 use App\Http\Resources\ToDoListResource;
 use App\Models\TodoList;
-
+use Auth;
 class ToDoListService
 {
     private $todoList;
@@ -17,7 +17,7 @@ class ToDoListService
 
     public function  details()
     {
-        return $this->todoListResource->collection($this->todoList->with('user')->get());
+        return $this->todoListResource->collection($this->todoList->with('user')->where('user_id', Auth::user()->id)->get());
     }
 
     public function update($id, $request)
